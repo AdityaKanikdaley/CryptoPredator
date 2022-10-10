@@ -27,7 +27,7 @@ export function numberWithCommas(x) {
 
 export default function CoinsTable() {
     const [coins, setCoins] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("");
     const [page, setPage] = useState(1);
 
@@ -62,7 +62,7 @@ export default function CoinsTable() {
     });
 
     const fetchCoins = async () => {
-        setLoading(true);
+        // setLoading(true); // preventing memory leak
         const { data } = await axios.get(CoinList(currency));
         console.log(data);
 
