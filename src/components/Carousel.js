@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles, CircularProgress } from '@material-ui/core'
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { CryptoState } from '../CryptoContext';
@@ -22,20 +22,33 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const useStylesFacebook = makeStyles((theme) => ({
+  style: {
+    color: 'gold',
+    margin: 'auto'
+  }
+}));
+
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 const Carousal = () => {
 
-  const [trending, setTrending] = useState([]);
   const classes = useStyles();
+  const circularClasses = useStylesFacebook();
+
+  const [trending, setTrending] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { currency, symbol } = CryptoState();
 
   const fetchTrendingCoins = async () => {
+    // setLoading(true); // preventing memory leak
     const { data } = await axios.get(TrendingCoins(currency));
+    
     setTrending(data);
+    setLoading(false);
   };
 
   console.log(trending);
@@ -87,19 +100,26 @@ const Carousal = () => {
   };
 
   return (
-    <div className={classes.carousel}>
-      <AliceCarousel
-        mouseTracking
-        infinite
-        autoPlayInterval={1000}
-        animationDuration={1500}
-        disableDotsControls
-        disableButtonsControls
-        responsive={responsive}
-        autoPlay
-        items={items}
+    loading ? (
+      <CircularProgress
+        variant="indeterminate"
+        className={circularClasses.style}
+        thickness={4}
       />
-    </div>
+    ) : (
+      <div className={classes.carousel}>
+        <AliceCarousel
+          mouseTracking
+          infinite
+          autoPlayInterval={1000}
+          animationDuration={1500}
+          disableDotsControls
+          disableButtonsControls
+          responsive={responsive}
+          autoPlay
+          items={items}
+        />
+      </div>)
   )
 }
 
