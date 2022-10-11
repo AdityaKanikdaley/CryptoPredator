@@ -4,6 +4,7 @@
   "homepage": "https://AdityaKanikdaley.github.io/CryptoPredator",
   "private": true,
   "dependencies": {
+    "-": "^0.0.1",
     "@material-ui/core": "^4.12.3",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@testing-library/jest-dom": "^5.11.4",
@@ -19,6 +20,7 @@
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "save-dev": "^0.0.1-security",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
