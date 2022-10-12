@@ -34,10 +34,10 @@ export function numberWithCommas(x) {
 }
 
 const Carousel = () => {
-  
+
   const classes = useStyles();
   const circularClasses = useStylesFacebook();
-  
+
   const [trending, setTrending] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -47,9 +47,9 @@ const Carousel = () => {
     // setLoading(true); // preventing memory leak
     const { data } = await axios.get(TrendingCoins(currency));
 
-    console.log(data);
     setTrending(data);
     setLoading(false);
+    console.log("Carousel List: ", data);
   };
 
   useEffect(() => {
@@ -57,9 +57,9 @@ const Carousel = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency]);
 
-  
 
-  
+
+
 
   const items = trending.map((coin) => {
     let profit = coin?.price_change_percentage_24h >= 0;
@@ -109,19 +109,19 @@ const Carousel = () => {
         thickness={4}
       />
     ) : (
-    <div className={classes.carousel}>
-      <AliceCarousel
-        mouseTracking
-        infinite
-        autoPlayInterval={1000}
-        animationDuration={1500}
-        disableDotsControls
-        disableButtonsControls
-        responsive={responsive}
-        items={items}
-        autoPlay
-      />
-    </div> )
+      <div className={classes.carousel}>
+        <AliceCarousel
+          mouseTracking
+          infinite
+          autoPlayInterval={1000}
+          animationDuration={1500}
+          disableDotsControls
+          disableButtonsControls
+          responsive={responsive}
+          items={items}
+          autoPlay
+        />
+      </div>)
   );
 };
 
