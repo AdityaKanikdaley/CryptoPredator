@@ -11,10 +11,10 @@ import {
   TextField,
   TableBody,
   TableRow,
-  TableHead,
+  // TableHead,
   TableContainer,
   Table,
-  Paper,
+  // Paper,
 } from "@material-ui/core";
 import axios from "axios";
 import { CoinList } from "../config/api";
