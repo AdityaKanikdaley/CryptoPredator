@@ -46,6 +46,7 @@ const CoinPage = () => {
     },
     heading: {
       fontWeight: "bold",
+      color: "#505050",
       marginBottom: 20,
       fontFamily: "Montserrat",
     },
@@ -55,6 +56,7 @@ const CoinPage = () => {
       padding: 25,
       paddingBottom: 15,
       paddingTop: 0,
+      color: "#606060",
       textAlign: "justify",
     },
     marketData: {
@@ -62,6 +64,7 @@ const CoinPage = () => {
       padding: 25,
       paddingTop: 10,
       width: "100%",
+      color: "#606060",
       [theme.breakpoints.down("md")]: {
         display: "flex",
         justifyContent: "space-around",
@@ -78,7 +81,7 @@ const CoinPage = () => {
 
   const classes = useStyles();
 
-  if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
+  if (!coin) return <LinearProgress style={{ backgroundColor: "#505050" }} />;
 
   return (
     <div className={classes.container}>

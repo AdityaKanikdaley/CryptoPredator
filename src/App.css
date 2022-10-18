@@ -11,3 +11,26 @@ a {
   text-decoration: none;
   color: gold;
 }
+
+.alice-carousel__stage {
+  height: 110% !important;
+  margin-top: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+/* carousel side padding */
+/* .MuiContainer-root {
+  padding-left: 23px !important;
+  padding-right: 30px !important;
+} */
+
+/* .MuiTable-root {
+  display: flex !important;
+  flex-direction: column;
+  
+  align-content: flex-start;
+} */
+
+.MuiTableContainer-root {
+  overflow-x: visible !important;
+}

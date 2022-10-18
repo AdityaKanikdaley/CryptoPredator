@@ -21,6 +21,7 @@ import { CoinList } from "../config/api";
 import { useHistory } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
 
+
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -34,30 +35,53 @@ export default function CoinsTable() {
   const { currency, symbol } = CryptoState();
 
   const useStyles = makeStyles({
-    row: {
-      backgroundColor: "#16171a",
+    pagination: {
+      "& .MuiPaginationItem-root": {
+        color: "#505050",
+      },
+    },
+    tContainer: {
+
+    },
+    tTable: {
+      display: "block",
+      flexDirection: "column",
+    },
+    tHead: {
+
+    },
+    tRow: {
+      display: "inline-grid",
+      margin: "10px",
       cursor: "pointer",
+      outline: "none",
+      borderRadius: "10px",
+      backgroundColor: "#ececec",
+      color: "#606060",
+      boxShadow: "-10px -10px 15px rgba(255, 255, 255, 0.5), 10px 10px 15px rgb(70, 70, 70, 0.12)",
+
       "&:hover": {
-        backgroundColor: "#131111",
+        backgroundColor: "#cfcfcf",
       },
       fontFamily: "Montserrat",
     },
-    pagination: {
-      "& .MuiPaginationItem-root": {
-        color: "gold",
-      },
+    tCell: {
+
     },
+    tRowHead: {
+
+    }
   });
 
   const classes = useStyles();
   const history = useHistory();
 
-  const darkTheme = createTheme({
+  const lightTheme = createTheme({
     palette: {
       primary: {
-        main: "#fff",
+        main: "#606060",
       },
-      type: "dark",
+      type: "light",
     },
   });
 
@@ -85,11 +109,11 @@ export default function CoinsTable() {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={lightTheme}>
       <Container style={{ textAlign: "center" }}>
         <Typography
           variant="h4"
-          style={{ margin: 18, fontFamily: "Montserrat" }}
+          style={{ margin: 18, fontFamily: "Montserrat", color: "#505050" }}
         >
           Cryptocurrency Prices by Market Cap
         </Typography>
@@ -99,17 +123,28 @@ export default function CoinsTable() {
           style={{ marginBottom: 20, width: "100%" }}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <TableContainer component={Paper}>
+
+        <TableContainer
+          className={classes.tContainer}
+        >
           {loading ? (
-            <LinearProgress style={{ backgroundColor: "gold" }} />
+            <LinearProgress style={{ backgroundColor: "#505050" }} />
           ) : (
-            <Table aria-label="simple table">
-              <TableHead style={{ backgroundColor: "#EEBC1D" }}>
-                <TableRow>
+            <Table aria-label="simple table"
+              className={classes.tTable}
+            >
+              {/* <TableHead 
+                style={{ backgroundColor: "#404040" }}
+                className={classes.tHead}
+                >
+                <TableRow
+                  className={classes.tRowHead}
+                >
                   {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
                     <TableCell
+                      className={classes.tCell}
                       style={{
-                        color: "black",
+                        color: "#ececec",
                         fontWeight: "700",
                         fontFamily: "Montserrat",
                       }}
@@ -120,7 +155,8 @@ export default function CoinsTable() {
                     </TableCell>
                   ))}
                 </TableRow>
-              </TableHead>
+              </TableHead> */}
+
 
               <TableBody>
                 {handleSearch()
@@ -130,7 +166,7 @@ export default function CoinsTable() {
                     return (
                       <TableRow
                         onClick={() => history.push(`/coins/${row.id}`)}
-                        className={classes.row}
+                        className={classes.tRow}
                         key={row.name}
                       >
                         <TableCell
@@ -144,11 +180,11 @@ export default function CoinsTable() {
                           <img
                             src={row?.image}
                             alt={row.name}
-                            height="50"
+                            height="70"
                             style={{ marginBottom: 10 }}
                           />
                           <div
-                            style={{ display: "flex", flexDirection: "column" }}
+                            style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}
                           >
                             <span
                               style={{
@@ -158,13 +194,13 @@ export default function CoinsTable() {
                             >
                               {row.symbol}
                             </span>
-                            <span style={{ color: "darkgrey" }}>
+                            <span style={{ color: "#737373" }}>
                               {row.name}
                             </span>
                           </div>
                         </TableCell>
                         <TableCell align="right">
-                          {symbol}{" "}
+                          Price: {symbol}{" "}
                           {numberWithCommas(row.current_price.toFixed(2))}
                         </TableCell>
                         <TableCell
@@ -178,11 +214,11 @@ export default function CoinsTable() {
                           {row.price_change_percentage_24h.toFixed(2)}%
                         </TableCell>
                         <TableCell align="right">
-                          {symbol}{" "}
+                          Market Cap: {symbol}{" "}
                           {numberWithCommas(
                             row.market_cap.toString().slice(0, -6)
                           )}
-                          M
+
                         </TableCell>
                       </TableRow>
                     );

@@ -14,17 +14,25 @@ const useStyles = makeStyles((theme) => ({
   },
   carouselItem: {
     display: "flex",
+    margin: "10px",
     flexDirection: "column",
     alignItems: "center",
     cursor: "pointer",
     textTransform: "uppercase",
-    color: "white",
+    color: "#606060",
+    boxShadow: "-10px -10px 15px rgba(255, 255, 255, 0.5), 10px 10px 15px rgb(70, 70, 70, 0.12)",
+    transform: "translate(0%, -6%)",
+    border: "8px solid #ececec",
+    outline: "none",
+    backgroundColor: "#ececec",
+    justifyContent: "center",
+    borderRadius: "10px",
   },
 }));
 
 const useStylesFacebook = makeStyles((theme) => ({
   style: {
-    color: 'gold',
+    color: '#505050',
     margin: 'auto'
   }
 }));
@@ -56,9 +64,6 @@ const Carousel = () => {
     fetchTrendingCoins();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency]);
-
-
-
 
 
   const items = trending.map((coin) => {
