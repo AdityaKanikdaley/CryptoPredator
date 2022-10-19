@@ -14,18 +14,23 @@ const useStyles = makeStyles((theme) => ({
   },
   carouselItem: {
     display: "flex",
-    margin: "10px",
     flexDirection: "column",
+    
+    margin: "10px",
+    padding: "8px",
     alignItems: "center",
+    justifyContent: "center",
+    
     cursor: "pointer",
     textTransform: "uppercase",
+    transform: "translate(0%, -6%)",
+    outline: "none",
+    
     color: "#606060",
     boxShadow: "-10px -10px 15px rgba(255, 255, 255, 0.5), 10px 10px 15px rgb(70, 70, 70, 0.12)",
-    transform: "translate(0%, -6%)",
-    border: "8px solid #ececec",
-    outline: "none",
     backgroundColor: "#ececec",
-    justifyContent: "center",
+    
+    // border: "8px solid #ececec",
     borderRadius: "10px",
   },
 }));
@@ -74,7 +79,7 @@ const Carousel = () => {
         <img
           src={coin?.image}
           alt={coin.name}
-          height="80"
+          height="80em"
           style={{ marginBottom: 10 }}
         />
         <span>
@@ -84,13 +89,14 @@ const Carousel = () => {
             style={{
               color: profit > 0 ? "rgb(14, 203, 129)" : "red",
               fontWeight: 500,
+              fontSize: "1.0rem"
             }}
           >
             {profit && "+"}
             {coin?.price_change_percentage_24h?.toFixed(2)}%
           </span>
         </span>
-        <span style={{ fontSize: 22, fontWeight: 500 }}>
+        <span style={{ fontSize: "0.88rem", fontWeight: 500 }}>
           {symbol} {numberWithCommas(coin?.current_price.toFixed(2))}
         </span>
       </Link>

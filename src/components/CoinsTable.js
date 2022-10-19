@@ -55,13 +55,16 @@ export default function CoinsTable() {
       margin: "10px",
       cursor: "pointer",
       outline: "none",
+      justifyItems: "center",
       borderRadius: "10px",
       backgroundColor: "#ececec",
       color: "#606060",
       boxShadow: "-10px -10px 15px rgba(255, 255, 255, 0.5), 10px 10px 15px rgb(70, 70, 70, 0.12)",
+      transition: "transform .5s",
 
       "&:hover": {
-        backgroundColor: "#cfcfcf",
+        // backgroundColor: "#cfcfcf",
+        transform: "scale(1.05)",
       },
       fontFamily: "Montserrat",
     },
