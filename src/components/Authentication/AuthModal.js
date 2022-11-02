@@ -128,9 +128,6 @@ export default function AuthModal() {
                         onClick={signInWithGoogle}
                       />
                     </Box>
-
-
-
           </div>
         </Fade>
       </Modal>
