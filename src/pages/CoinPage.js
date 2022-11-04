@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import HTMLReactParser from "html-react-parser";
-import CoinInfo from "../components/CoinInfo";
+import HistogramGraph from "../components/HistogramGraph";
 import { SingleCoin } from "../config/api";
 import { numberWithCommas } from "../components/CoinsTable";
 import { CryptoState } from "../CryptoContext";
@@ -242,7 +242,7 @@ const CoinPage = () => {
       </div>
 
       {/* chart */}
-      <CoinInfo coin={coin} />
+      <HistogramGraph coin={coin} />
     </div>
   );
 };

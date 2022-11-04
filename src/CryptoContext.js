@@ -46,7 +46,7 @@ const CryptoContext = ({ children }) => {
       if (user) setUser(user);
       else setUser(null);
 
-      console.log(user);
+      console.log("User: ", user);
     });
   }, [])
 
