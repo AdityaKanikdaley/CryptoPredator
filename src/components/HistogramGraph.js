@@ -26,9 +26,7 @@ const HistogramGraph = ({ coin }) => {
       alignItems: "center",
       justifyContent: "center",
       // marginTop: 25,
-      // padding: 40,
-      paddingLeft: 40,
-      paddingRight: 40,
+      padding: 40,
       [theme.breakpoints.down("md")]: {
         width: "100%",
         marginTop: 0,
