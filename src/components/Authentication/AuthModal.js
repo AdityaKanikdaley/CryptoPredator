@@ -8,7 +8,7 @@ import GoogleButton from 'react-google-button';
 import Login from './Login';
 import Signup from './Signup';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import  { CryptoState } from '../../CryptoContext';
+import { CryptoState } from '../../CryptoContext';
 import { auth } from '../../firebase';
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     textAlign: "center",
     gap: 20,
-    fontSize: 20,  
+    fontSize: 20,
   },
 }));
 
@@ -57,34 +57,34 @@ export default function AuthModal() {
   const googleProvider = new GoogleAuthProvider();
 
   const signInWithGoogle = () => {
-      signInWithPopup(auth, googleProvider).then(res => {
-        setAlert({
-          open: true,
-          message: `Sign Up Successful. Welcome ${res.user.email}`,
-          type: "success"
-        });
-
-        handleClose();
-      }).catch((error) => {
-        setAlert({
-          open: true,
-          message: error.message,
-          type: 'error'
-        });
-        return;
+    signInWithPopup(auth, googleProvider).then(res => {
+      setAlert({
+        open: true,
+        message: `Sign Up Successful. Welcome ${res.user.email}`,
+        type: "success"
       });
+
+      handleClose();
+    }).catch((error) => {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: 'error'
+      });
+      return;
+    });
   };
 
   return (
     <div>
-      <Button 
+      <Button
         variant='contained'
         style={{
-            width: 85,
-            height: 40,
-            marginLeft: 15,
-            color: "#e6e6e6",
-            backgroundColor: "#606060",  
+          width: 85,
+          height: 40,
+          marginLeft: 15,
+          color: "#e6e6e6",
+          backgroundColor: "#606060",
         }}
         onClick={handleOpen}
       >Login
@@ -104,31 +104,31 @@ export default function AuthModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <AppBar 
-                position='static' 
-                style={{
-                    backgroundColor: "transparent",
-                    color: "black"
-                    }} >
-                        <Tabs 
-                            value={value}
-                            onChange={handleChange}
-                            variant='fullWidth'
-                            style={{borderRadius: 10}} >
-                                <Tab label="Login" />
-                                <Tab label="Sign Up" />
-                            </Tabs>
-                    </AppBar> 
-                    { value === 0 && <Login handleClose = {handleClose} /> }
-                    { value === 1 && <Signup handleClose = {handleClose}/> }
+            <AppBar
+              position='static'
+              style={{
+                backgroundColor: "transparent",
+                color: "black"
+              }} >
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                variant='fullWidth'
+                style={{ borderRadius: 10 }} >
+                <Tab label="Login" />
+                <Tab label="Sign Up" />
+              </Tabs>
+            </AppBar>
+            {value === 0 && <Login handleClose={handleClose} />}
+            {value === 1 && <Signup handleClose={handleClose} />}
 
-                    <Box className={classes.google}>
-                      <span style={{ color: "black"}}>OR</span>
-                      <GoogleButton
-                        style={{ width: "100%", outline: "none"}}
-                        onClick={signInWithGoogle}
-                      />
-                    </Box>                
+            <Box className={classes.google}>
+              <span style={{ color: "black" }}>OR</span>
+              <GoogleButton
+                style={{ width: "100%", outline: "none" }}
+                onClick={signInWithGoogle}
+              />
+            </Box>
           </div>
         </Fade>
       </Modal>

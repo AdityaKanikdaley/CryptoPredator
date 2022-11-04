@@ -10,8 +10,8 @@ const Login = ({ handleClose }) => {
 
     const { setAlert } = CryptoState();
 
-    const handleSubmit = async () => { 
-        if(!email || !password) {
+    const handleSubmit = async () => {
+        if (!email || !password) {
             setAlert({
                 open: true,
                 message: 'Please fill all the Fields',
@@ -21,8 +21,8 @@ const Login = ({ handleClose }) => {
         }
 
         try {
-           const result = await signInWithEmailAndPassword(auth, email, password);
-           
+            const result = await signInWithEmailAndPassword(auth, email, password);
+
             setAlert({
                 open: true,
                 message: `Login Successful. Welcome ${result.user.email}`,
@@ -66,9 +66,10 @@ const Login = ({ handleClose }) => {
             <Button
                 variant='contained'
                 size='large'
-                style={{ 
+                style={{
                     color: "#e6e6e6",
-                    backgroundColor: "#606060",  }}
+                    backgroundColor: "#606060",
+                }}
                 onClick={handleSubmit}
             >
                 Login

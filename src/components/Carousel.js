@@ -15,21 +15,21 @@ const useStyles = makeStyles((theme) => ({
   carouselItem: {
     display: "flex",
     flexDirection: "column",
-    
+
     margin: "10px",
     padding: "8px",
     alignItems: "center",
     justifyContent: "center",
-    
+
     cursor: "pointer",
     textTransform: "uppercase",
     transform: "translate(0%, -6%)",
     outline: "none",
-    
+
     color: "#606060",
     boxShadow: "-10px -10px 15px rgba(255, 255, 255, 0.5), 10px 10px 15px rgb(70, 70, 70, 0.12)",
     backgroundColor: "#ececec",
-    
+
     // border: "8px solid #ececec",
     borderRadius: "10px",
   },

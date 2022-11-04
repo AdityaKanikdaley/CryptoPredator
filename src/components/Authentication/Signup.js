@@ -12,7 +12,7 @@ const Signup = ({ handleClose }) => {
     const { setAlert } = CryptoState();
 
     const handleSubmit = async () => {
-        if(password !== confirmPassword) {
+        if (password !== confirmPassword) {
             setAlert({
                 open: true,
                 message: 'Passwords do not match',
@@ -39,7 +39,7 @@ const Signup = ({ handleClose }) => {
             });
             return;
         }
-     };
+    };
 
     return (
         <Box
@@ -75,9 +75,10 @@ const Signup = ({ handleClose }) => {
             <Button
                 variant='contained'
                 size='large'
-                style={{ 
+                style={{
                     color: "#e6e6e6",
-                    backgroundColor: "#606060",  }}
+                    backgroundColor: "#606060",
+                }}
                 onClick={handleSubmit}
             >
                 Sign Up

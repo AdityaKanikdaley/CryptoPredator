@@ -23,11 +23,11 @@ const CryptoContext = ({ children }) => {
   const [watchlist, setwatchlist] = useState([]);
 
   useEffect(() => {
-    if(user) {
+    if (user) {
       const coinRef = doc(db, "watchlist", user.uid);
 
-      var unSubscribe = onSnapshot(coinRef, coin=> {
-        if(coin.exists()) {
+      var unSubscribe = onSnapshot(coinRef, coin => {
+        if (coin.exists()) {
           console.log("coins in watchlist: ", coin.data().coins);
           setwatchlist(coin.data().coins);
         } else {
@@ -40,7 +40,7 @@ const CryptoContext = ({ children }) => {
       };
     }
   }, [user])
-  
+
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if (user) setUser(user);
@@ -68,18 +68,18 @@ const CryptoContext = ({ children }) => {
   }, [currency]);
 
   return (
-    <Crypto.Provider value={{ 
-          currency, 
-          setCurrency, 
-          symbol, 
-          coins, 
-          loading, 
-          fetchCoins, 
-          alert, setAlert, 
-          user,
-          watchlist 
-        }}
-      >
+    <Crypto.Provider value={{
+      currency,
+      setCurrency,
+      symbol,
+      coins,
+      loading,
+      fetchCoins,
+      alert, setAlert,
+      user,
+      watchlist
+    }}
+    >
       {children}
     </Crypto.Provider>
   );

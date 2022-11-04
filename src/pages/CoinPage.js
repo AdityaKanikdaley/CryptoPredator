@@ -67,7 +67,7 @@ const CoinPage = () => {
       paddingTop: 10,
       width: "100%",
       color: "#606060",
-      
+
       // Making it responsive
       [theme.breakpoints.down("sm")]: {
         flexDirection: "column",
@@ -89,28 +89,28 @@ const CoinPage = () => {
       border: "none",
       color: inWatchlist ? "white" : "#606060",
       backgroundColor: inWatchlist ? "#ff3300" : "#ececec",
-      boxShadow: inWatchlist ? 
-          "-5px -5px 20px rgba(255, 153, 128, 0.6), 5px 5px 20px rgba(204, 41, 0, 0.6)" 
-          : "-10px -10px 15px rgba(255, 255, 255, 1.2), 10px 10px 15px rgb(70, 70, 70, 0.18)",
+      boxShadow: inWatchlist ?
+        "-5px -5px 20px rgba(255, 153, 128, 0.6), 5px 5px 20px rgba(204, 41, 0, 0.6)"
+        : "-10px -10px 15px rgba(255, 255, 255, 1.2), 10px 10px 15px rgb(70, 70, 70, 0.18)",
       "&:hover": {
         backgroundColor: inWatchlist ? "#ff3300" : "#ececec",
         color: inWatchlist ? "white" : "#606060",
-      },  
+      },
     }
   }));
 
   const inWatchlist = watchlist.includes(coin?.id);
-  
+
   const addToWatchlist = async () => {
     const coinRef = doc(db, "watchlist", user.uid);
 
     try {
       await setDoc(
-        coinRef, 
+        coinRef,
         {
           coins: watchlist ? [...watchlist, coin?.id] : [coin?.id], //if watchlist is not empty the add current coin otherwise add current coin to that empty watchlist
         }
-        );
+      );
 
       setAlert({
         open: true,
@@ -131,12 +131,12 @@ const CoinPage = () => {
 
     try {
       await setDoc(
-        coinRef, 
+        coinRef,
         {
           coins: watchlist.filter((watch) => watch !== coin?.id), //remove that coin from watchlist
         },
         { merge: "true" }
-        );
+      );
 
       setAlert({
         open: true,
@@ -232,11 +232,11 @@ const CoinPage = () => {
               className={classes.watchlistBtn}
               variant="outlined"
               onClick={inWatchlist ? removeFromWatchlist : addToWatchlist}
-              >
-                {inWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
-              </Button>
+            >
+              {inWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
+            </Button>
           )}
-          
+
 
         </div>
       </div>

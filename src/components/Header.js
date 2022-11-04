@@ -66,8 +66,8 @@ function Header() {
               <MenuItem value={"INR"}>INR</MenuItem>
             </Select>
 
-            {user ? <UserSideBar /> : <AuthModal /> }
-            
+            {user ? <UserSideBar /> : <AuthModal />}
+
           </Toolbar>
         </Container>
       </AppBar>
