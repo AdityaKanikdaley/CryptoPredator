@@ -16,7 +16,8 @@ const useStyles = makeStyles({
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        fontFamily: "monospace"
+        fontFamily: "monospace",     
+        backgroundColor: "#e6e6e6",
     },
     profile: {
         flex: 1,
@@ -29,20 +30,28 @@ const useStyles = makeStyles({
     picture: {
         width: 200,
         height: 200,
-        cursor: "pointer",
-        backgroundColor: "gold",
-        objectFit: "contain"
+        color: "#606060",
+        boxShadow: "-5px -5px 10px rgba(255, 255, 255, 1.2), 5px 5px 15px rgb(70, 70, 70, 0.25)",
+        backgroundColor: "#ececec",
+        objectFit: "contain",
+        textTransform: "uppercase",
     },
     logout: {
         height: "8%",
         width: "100%",
-        backgroundColor: "gold",
-        marginTop: 20
+        color: "#606060",
+        boxShadow: "-10px -10px 15px rgba(255, 255, 255, 1.2), 10px 10px 15px rgb(70, 70, 70, 0.18)",
+        backgroundColor: "#ececec",
+        "&:hover": {
+          backgroundColor: "#505050",
+          color: "#ececec",
+        },  
+        marginTop: 25
     },
     watchList: {
         flex: 1,
         width: "100%",
-        backgroundColor: "grey",
+        backgroundColor: "#d9d9d9",
         borderRadius: 10,
         padding: 15,
         paddingTop: 10,
@@ -52,20 +61,18 @@ const useStyles = makeStyles({
         gap: 12,
         overflowY: "scroll"
     },
-    coin: {
+    watchlistItem: {
       padding: 10,
       borderRadius: 5,
-      color: "black",
+      color: "#606060",
+      boxShadow: "-5px -5px 15px rgba(255, 255, 255, 0.6), 10px 10px 20px rgb(70, 70, 70, 0.12)",
+      backgroundColor: "#ececec",
       width: "100%",
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
-      backgroundColor: "gold",
-      boxShadow: "0 0 3px black",
     },
 });
-
-
 
 export default function UserSideBar() {
   const classes = useStyles();
@@ -135,6 +142,7 @@ export default function UserSideBar() {
               marginLeft: 15,
               cursor: "pointer",
               backgroundColor: "#606060",
+              textTransform: "uppercase",
             }}
             src={user.photoURL}
             alt={user.displayName || user.email}
@@ -160,15 +168,15 @@ export default function UserSideBar() {
                         </span>
 
                         <div className={classes.watchList} >
-                            <span style={{ fontSize: 15, textShadow: '0 0 5px black', color: "white"}}>
+                            <span style={{ fontSize: 15, textShadow: '1px 1px 5px #808080', color: "black"}}>
                             Watchlist
                             </span>
 
-                          {
+                          { // eslint-disable-next-line
                             coins.map((coin) => {
                               if(watchlist.includes(coin.id))
                                 return (
-                                  <div className={classes.coin} key={coin.id}>
+                                  <div className={classes.watchlistItem} key={coin.id}>
                                     <span>{coin.name}</span>
                                     <span style={{ display: "flex", gap: 8}}>
                                       {symbol}

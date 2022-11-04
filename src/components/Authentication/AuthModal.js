@@ -83,7 +83,8 @@ export default function AuthModal() {
             width: 85,
             height: 40,
             marginLeft: 15,
-            backgroundColor: "gold"
+            color: "#e6e6e6",
+            backgroundColor: "#606060",  
         }}
         onClick={handleOpen}
       >Login
@@ -127,9 +128,7 @@ export default function AuthModal() {
                         style={{ width: "100%", outline: "none"}}
                         onClick={signInWithGoogle}
                       />
-                    </Box>
-
-                    
+                    </Box>                
           </div>
         </Fade>
       </Modal>

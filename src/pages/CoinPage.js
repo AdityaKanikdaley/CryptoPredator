@@ -49,14 +49,14 @@ const CoinPage = () => {
     heading: {
       fontWeight: "bold",
       color: "#505050",
-      marginBottom: 20,
+      marginBottom: 10,
       fontFamily: "Montserrat",
     },
     description: {
       width: "100%",
       fontFamily: "Montserrat",
       padding: 25,
-      paddingBottom: 15,
+      paddingBottom: 5,
       paddingTop: 0,
       color: "#606060",
       textAlign: "justify",
@@ -82,6 +82,21 @@ const CoinPage = () => {
         alignItems: "start",
       },
     },
+    watchlistBtn: {
+      width: "100%",
+      height: 40,
+      marginTop: 10,
+      border: "none",
+      color: inWatchlist ? "white" : "#606060",
+      backgroundColor: inWatchlist ? "#ff3300" : "#ececec",
+      boxShadow: inWatchlist ? 
+          "-5px -5px 20px rgba(255, 153, 128, 0.6), 5px 5px 20px rgba(204, 41, 0, 0.6)" 
+          : "-10px -10px 15px rgba(255, 255, 255, 1.2), 10px 10px 15px rgb(70, 70, 70, 0.18)",
+      "&:hover": {
+        backgroundColor: inWatchlist ? "#ff3300" : "#ececec",
+        color: inWatchlist ? "white" : "#606060",
+      },  
+    }
   }));
 
   const inWatchlist = watchlist.includes(coin?.id);
@@ -149,7 +164,7 @@ const CoinPage = () => {
         <img
           src={coin?.image.large}
           alt={coin?.name}
-          height="200"
+          height="180"
           style={{ marginBottom: 20 }}
         />
         <Typography variant="h3" className={classes.heading}>
@@ -214,12 +229,8 @@ const CoinPage = () => {
 
           {user && (
             <Button
+              className={classes.watchlistBtn}
               variant="outlined"
-              style={{
-                width: "100%",
-                height: 40,
-                backgroundColor: inWatchlist ? "red" : "gold"
-              }}
               onClick={inWatchlist ? removeFromWatchlist : addToWatchlist}
               >
                 {inWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
